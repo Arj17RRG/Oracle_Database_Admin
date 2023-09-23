@@ -1,0 +1,20 @@
+-- Database basics information 
+-- use v$database for single instance database
+-- always use gv$database with inst_id column to fetch the details of cluster_database
+-- Below sql-command will help you to find out the current information of database 
+-- you must have privelege to run the command.... 
+
+set lines 200 pages 200
+col uptime for a25 
+col hostname for a25 
+col force_logging for a15 
+select a.NAME AS "DATABASE NAME",
+  b.VERSION AS "DATABASE VERSION",
+  b.INSTANCE_NAME AS "INSTANCE NAME",
+  b.HOST_NAME AS "HOSTNAME",
+  to_char (b.STARTUP_TIME,'dd-mm-yyyy hh24:mi') AS "UPTIME",
+  a.OPEN_MODE AS "DATABASE OPEN MODE",
+   a.force_logging AS "FORCE_LOGGING",
+  a.LOG_MODE AS "LOGMODE"
+FROM v$database a,
+  gv$instance b;
