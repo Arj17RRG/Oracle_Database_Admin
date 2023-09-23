@@ -2,7 +2,8 @@
 -- use v$database for single instance database
 -- always use gv$database with inst_id column to fetch the details of cluster_database
 -- Below sql-command will help you to find out the current information of database 
--- you must have privelege to run the command.... 
+-- you must have privelege to run the command....
+-- please check oracle documentation on v$database for more information ....
 
 set lines 200 pages 200
 col uptime for a25 
